@@ -1,6 +1,7 @@
 # Urbanist candidate test #
 
 your task is to create an event manager application
+below are the application requirements:
 
 ## an event has: ##
 *  name
@@ -27,3 +28,7 @@ your task is to create an event manager application
 ## NOTES ##
 * the project already includes _nemo64:bootstrap_ and _less_ packages for bootstrap 3 styles
 * if it's helpful, the project includes a fixture of guests at /fixtures/guests.json
+
+## SUBMISSION ##
+* to start the task, please fork this repository
+* when you're done, deploy to a Meteor hosted site (*.meteor.com) and share the forked repository
