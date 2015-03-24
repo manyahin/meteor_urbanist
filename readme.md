@@ -1,7 +1,6 @@
 # Urbanist candidate test #
 
 your task is to create an event manager application
-below are the application requirements:
 
 ## an event has: ##
 *  name
