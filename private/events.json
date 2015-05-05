@@ -1,0 +1,80 @@
+[
+	{
+		"name": "Cat show",
+		"date": "Tue May 04 2015 22:17:13 GMT+0300 (IDT)",
+		"guests": [
+			{
+				"name": "Jone",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "attending"
+			},
+			{
+				"name": "Mary",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "not attending"
+			},
+			{
+				"name": "Michael",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "maybe"
+			},
+			{
+				"name": "Daniel",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "attending"
+			}
+		]
+	},
+	{
+		"name": "Big data",
+		"date": "Tue Sep 05 2015 22:17:13 GMT+0300 (IDT)",
+		"guests": [
+			{
+				"name": "Jone",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "not attending"
+			},
+			{
+				"name": "Mary",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "not attending"
+			},
+			{
+				"name": "Michael",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "attending"
+			},
+			{
+				"name": "Daniel",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "attending"
+			}
+		]
+	},
+	{
+		"name": "Public library",
+		"date": "Tue Sep 06 2015 22:17:13 GMT+0300 (IDT)",
+		"guests": [
+			{
+				"name": "Jone",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "attending"
+			},
+			{
+				"name": "Mary",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "attending"
+			},
+			{
+				"name": "Michael",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "maybe"
+			},
+			{
+				"name": "Daniel",
+				"picture": "http://lorempixel.com/50/50/people/",
+				"status": "attending"
+			}
+		]
+	}
+]
