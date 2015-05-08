@@ -12,6 +12,7 @@
     <title>Events Manager</title>
 
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.css" rel="stylesheet">
   </head>
 
   <body>
@@ -76,11 +77,11 @@
 		      <div class="modal-body">
 				  <div class="form-group">
 				    <label for="inputEventName">Name</label>
-				    <input type="name" class="form-control" id="inputEventName" placeholder="Enter event name">
+				    <input type="text" class="form-control" id="inputEventName" placeholder="Enter event name">
 				  </div>
 				  <div class="form-group">
 				    <label for="inputEventDate">Date</label>
-				    <input type="password" class="form-control" id="inputEventDate" placeholder="Select event date">
+				    <input type="text" class="form-control" id="inputEventDate" placeholder="Select event date">
 				  </div>
 		      </div>
 		      <div class="modal-footer">
@@ -94,6 +95,13 @@
 
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+
+    <script>
+		$('#inputEventDate').datepicker({
+			
+		});
+    </script>
 
   </body>
 </html>
