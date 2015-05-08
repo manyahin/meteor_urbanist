@@ -5,22 +5,22 @@
 		"guests": [
 			{
 				"name": "Jone",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "1.jpeg",
 				"status": "attending"
 			},
 			{
 				"name": "Mary",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "2.jpeg",
 				"status": "not attending"
 			},
 			{
 				"name": "Michael",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "3.jpeg",
 				"status": "maybe"
 			},
 			{
 				"name": "Daniel",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "4.jpeg",
 				"status": "attending"
 			}
 		]
@@ -31,22 +31,22 @@
 		"guests": [
 			{
 				"name": "Jone",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "1.jpeg",
 				"status": "not attending"
 			},
 			{
 				"name": "Mary",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "2.jpeg",
 				"status": "not attending"
 			},
 			{
 				"name": "Michael",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "3.jpeg",
 				"status": "attending"
 			},
 			{
 				"name": "Daniel",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "4.jpeg",
 				"status": "attending"
 			}
 		]
@@ -57,22 +57,22 @@
 		"guests": [
 			{
 				"name": "Jone",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "1.jpeg",
 				"status": "attending"
 			},
 			{
 				"name": "Mary",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "2.jpeg",
 				"status": "attending"
 			},
 			{
 				"name": "Michael",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "3.jpeg",
 				"status": "maybe"
 			},
 			{
 				"name": "Daniel",
-				"picture": "http://lorempixel.com/50/50/people/",
+				"picture": "4.jpeg",
 				"status": "attending"
 			}
 		]

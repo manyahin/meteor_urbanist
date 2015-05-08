@@ -1,0 +1,25 @@
+{
+    "name": "Mr. Trix",
+    "status": "attending"
+},
+{
+
+    "name": "Colonel Mustard",
+    "status": "maybe"
+},
+{
+
+    "name": "George Washington",
+    "status": "attending"
+
+},
+{
+    "name": "Captain Crunch",
+    "status": "not attending"
+
+},
+{
+
+    "name": "Lady Oats",
+    "status": "maybe"
+}
