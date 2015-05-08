@@ -61,7 +61,7 @@ if (Meteor.isClient) {
 		    if (! $guestStatus.val())
 		      return;
 
-		  	console.log(Session.get('editing_key'), guests: {
+		  	console.log(Session.get('editing_key'), {
 			  				name: $guestName.val(),
 					  		picture: $guestPicture.val(),
 					  		status: $guestStatus.val()
