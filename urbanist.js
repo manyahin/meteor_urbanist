@@ -2,12 +2,14 @@ Events = new Mongo.Collection("events");
 
 if (Meteor.isClient) {
 
+	// allEvents template.
 	Template.allEvents.helpers({
 		events: function() {
 			return Events.find({}, {$sort: {date : 1}});
 		}
 	});
 
+	// oneEvent template.
 	Template.oneEvent.helpers({
 		statusIs : function(status) {
 			return this.status === status;
@@ -17,6 +19,13 @@ if (Meteor.isClient) {
 		}
 	});
 
+	Template.oneEvent.events({
+		'click button.add-guest': function(event) {
+			Session.set('editing_key', this._id);
+		}
+	});
+
+	// body template.
 	Template.body.events({
 		'submit .create-event': function(event) {
 			event.preventDefault();
@@ -36,7 +45,39 @@ if (Meteor.isClient) {
 		  	});
 
 		  	$('#createEvent').modal('hide');
-		}
+		},
+		'submit .add-guest': function(event) {
+			event.preventDefault();
+
+			var $guestName = $(event.target).find('#inputGuestName');
+		    if (! $guestName.val())
+		      return;
+
+		  	var $guestPicture = $(event.target).find('#inputGuestPicture');
+		    if (! $guestPicture.val())
+		      return;
+
+		    var $guestStatus = $(event.target).find('#inputGuestStatus');
+		    if (! $guestStatus.val())
+		      return;
+
+		  	Events.update(
+		  		{
+					_id: Session.get('editing_key')
+				},
+				{
+			  		$push : {
+			  			guests: {
+			  				name: $guestName.val(),
+					  		picture: $guestPicture.val(),
+					  		status: $guestStatus.val()
+					  	}
+			  		}
+			  	}
+		  	);
+
+		  	$('#addGuest').modal('hide');
+		},
 	});
 
 }

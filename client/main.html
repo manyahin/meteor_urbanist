@@ -73,22 +73,22 @@
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 	        <h4 class="modal-title" id="myModalLabel">Add a new Guest</h4>
 	      </div>
-	        <form>
+	        <form class="add-guest">
 		      <div class="modal-body">
 				  <div class="form-group">
 				    <label for="inputGuestName">Name</label>
 				    <input type="text" class="form-control" id="inputGuestName" placeholder="Enter a guest name">
 				  </div>
 				  <div class="form-group">
-				    <label for="inputGuestPicture">Date</label>
-				    <input type="text" class="form-control" id="inputGuestPicture" placeholder="Select a picture" value="http://lorempixel.com/50/50/people/">
+				    <label for="inputGuestPicture">Picture</label>
+				    <input type="text" class="form-control" id="inputGuestPicture" placeholder="Please use [0-10].jpeg">
 				  </div>
 				  <div class="form-group">
  					<label for="inputGuestStatus">Status</label>
 				    <select class="form-control" id="inputGuestStatus">
-					  <option>Attening</option>
-					  <option>Maybe</option>
-					  <option>Not attening</option>
+					  <option value="attening">Attening</option>
+					  <option value="maybe">Maybe</option>
+					  <option value="not attening">Not attening</option>
 					</select>
 				  </div>
 		      </div>
@@ -161,5 +161,5 @@
   </template>
 
   <template name="guest">
-  	<li><img src="avatars/{{picture}}"> {{name}} <small><a href="#">edit</a></small></li>
+  	<li><img src="pictures/{{picture}}"> {{name}} <small><a href="#">edit</a></small></li>
   </template>
