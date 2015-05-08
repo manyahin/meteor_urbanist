@@ -8,3 +8,5 @@ meteor-platform
 autopublish
 insecure
 less
+jquery
+rajit:bootstrap3-datepicker
