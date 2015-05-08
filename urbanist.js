@@ -17,6 +17,28 @@ if (Meteor.isClient) {
 		}
 	});
 
+	Template.body.events({
+		'submit .create-event': function(event) {
+			event.preventDefault();
+
+			var $eventName = $(event.target).find('#inputEventName');
+		    if (! $eventName.val())
+		      return;
+
+		  	var $eventDate = $(event.target).find('#inputEventDate');
+		    if (! $eventDate.val())
+		      return;
+
+		  	Events.insert({
+		  		name: $eventName.val(),
+		  		date: new Date($eventDate.val()),
+		  		guests: []
+		  	});
+
+		  	$('#createEvent').modal('hide');
+		}
+	});
+
 }
 
 if (Meteor.isServer) {
