@@ -61,6 +61,12 @@ if (Meteor.isClient) {
 		    if (! $guestStatus.val())
 		      return;
 
+		  	console.log(Session.get('editing_key'), guests: {
+			  				name: $guestName.val(),
+					  		picture: $guestPicture.val(),
+					  		status: $guestStatus.val()
+					  	});
+
 		  	Events.update(
 		  		{
 					_id: Session.get('editing_key')
@@ -75,6 +81,8 @@ if (Meteor.isClient) {
 			  		}
 			  	}
 		  	);
+
+		  	Session.set('editing_key', null);
 
 		  	$('#addGuest').modal('hide');
 		},
