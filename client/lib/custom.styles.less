@@ -1,0 +1,108 @@
+/* Space out content a bit */
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+/* Custom page header */
+.header {
+  padding-bottom: 20px;
+  border-bottom: 1px solid #e5e5e5;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 34px;
+  }
+
+  @media (max-width: 768px) {
+    .create-event {
+      margin-top: 11px;
+    }
+  }
+}
+
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
+
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
+
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 19px;
+  }
+}
+
+.event-list {
+  .event-item {
+      padding: 12px 28px;
+      border: 1px solid #e5e5e5;
+      margin: 10px;
+      border-radius: 9px;
+
+      h3 {
+        margin-top: 3px;
+        margin-bottom: 8px;
+      }
+
+      .event-header {
+        border-bottom: 1px solid #e5e5e5;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
+      }
+
+      .guest-list {
+        .col-sm-4 {
+          border-right: 1px solid grey;
+        }
+        .col-sm-4:last-child {
+          border-right: none;
+        }
+        .col-header {
+          text-align: center;
+          font-weight: bold;
+        }
+        ul {
+          list-style: none;
+          padding-left: 5px;
+        }
+      }
+  }
+}
