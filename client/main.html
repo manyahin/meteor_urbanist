@@ -29,12 +29,8 @@
         </div>
       </div>
 
-
-
 	  {{> allEvents}}
 
-	 	
-      
       <footer class="footer">
         <p>&copy; Events Manager 2015</p>
       </footer>
@@ -118,10 +114,10 @@
   <template name="oneEvent">
 	<div class="event-item">
   		<div class="row event-header">
-  			<div class="col-sm-6">
-  				<h3>{{name}} <small>{{date}}</small></h3>
+  			<div class="col-sm-7">
+  				<h3>{{name}} <small>{{displayDate date}}</small></h3>
   			</div>
-  			<div class="col-sm-3">
+  			<div class="col-sm-2">
   				<button class="btn btn-link edit-link">Edit event</button>
   			</div>
   			<div class="col-sm-3">

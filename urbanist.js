@@ -11,6 +11,9 @@ if (Meteor.isClient) {
 	Template.oneEvent.helpers({
 		statusIs : function(status) {
 			return this.status === status;
+		},
+		displayDate : function(date) {
+			return dateFormat(date, "dddd, mmmm dS");
 		}
 	});
 
