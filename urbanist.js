@@ -1,3 +1,5 @@
+var editing_event_key = false;
+
 Events = new Mongo.Collection("events");
 
 if (Meteor.isClient) {
@@ -20,33 +22,66 @@ if (Meteor.isClient) {
 	});
 
 	Template.oneEvent.events({
-		'click button.add-guest': function(event) {
+		'click button.add-guest': function(event, obj) {
 			Session.set('editing_key', this._id);
+		},
+		'click button.edit-link': function(event, obj) {
+			Session.set('editing_event_key', this._id);
+
+			$('#inputEventName').val(this.name);
+			$('#inputEventDate').val(dateFormat(this.date, "dd/mm/yy"));
+
+			// var $eventDate = $(event.target).find('#inputEventDate');
+			// $eventDate.val(dateFormat(this.date, "dd/mm/yy"));
 		}
 	});
 
 	// body template.
+	Template.body.helpers({
+		editing_event_key : function() {
+			console.log(Session.get('editing_event_key'));
+			return Session.get('editing_event_key');
+		}
+	});
 	Template.body.events({
 		'submit .create-event': function(event) {
 			event.preventDefault();
 
+			// Get and check form values.
 			var $eventName = $(event.target).find('#inputEventName');
 		    if (! $eventName.val())
 		      return;
-
 		  	var $eventDate = $(event.target).find('#inputEventDate');
 		    if (! $eventDate.val())
 		      return;
 
-		  	Events.insert({
-		  		name: $eventName.val(),
-		  		date: new Date($eventDate.val()),
-		  		guests: []
-		  	});
+		  	var _id_event = Session.get('editing_event_key');
+		  	if (_id_event) {
+		  		// Update old entity in database.
+		  		Events.update({
+		  			_id: _id_event
+		  		}, {
+		  			$set : {
+		  				name: $eventName.val(),
+		  				date: new Date($eventDate.val())
+		  			}
+		  		})
+		  		// Release editing key. 
+		  		Session.get('editing_event_key', false);
+		  	} else {
+		  		// Insert new entity to database.
+		  		Events.insert({
+			  		name: $eventName.val(),
+			  		date: new Date($eventDate.val()),
+			  		guests: []
+			  	});
+		  	}
 
+		  	// Release inputs.
 		  	$eventName.val('');
 		  	$eventDate.val('');
 
+		  	// Close modal.
 		  	$('#createEvent').modal('hide');
 		},
 		'submit .add-guest': function(event) {
