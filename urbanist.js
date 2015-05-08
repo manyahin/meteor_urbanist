@@ -44,6 +44,9 @@ if (Meteor.isClient) {
 		  		guests: []
 		  	});
 
+		  	$eventName.val('');
+		  	$eventDate.val('');
+
 		  	$('#createEvent').modal('hide');
 		},
 		'submit .add-guest': function(event) {
@@ -61,12 +64,6 @@ if (Meteor.isClient) {
 		    if (! $guestStatus.val())
 		      return;
 
-		  	console.log(Session.get('editing_key'), {
-			  				name: $guestName.val(),
-					  		picture: $guestPicture.val(),
-					  		status: $guestStatus.val()
-					  	});
-
 		  	Events.update(
 		  		{
 					_id: Session.get('editing_key')
@@ -81,6 +78,10 @@ if (Meteor.isClient) {
 			  		}
 			  	}
 		  	);
+
+		  	$guestName.val('');
+		  	$guestPicture.val('');
+		  	$guestStatus.val('');
 
 		  	Session.set('editing_key', null);
 
