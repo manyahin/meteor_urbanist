@@ -16,12 +16,18 @@ body {
 .header {
   padding-bottom: 20px;
   border-bottom: 1px solid #e5e5e5;
-}
-/* Make the masthead heading the same height as the navigation */
-.header h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 40px;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 34px;
+  }
+
+  @media (max-width: @screen-sm) {
+    .create-event {
+      margin-top: 11px;
+    }
+  }
 }
 
 /* Custom page footer */
