@@ -29,75 +29,11 @@
         </div>
       </div>
 
-	  <div class="event-list">
-      	<div class="event-item">
-      		<div class="row event-header">
-      			<div class="col-sm-6">
-      				<h3>Cat show <small>3 september</small></h3>
-      			</div>
-      			<div class="col-sm-3">
-      				<button class="btn btn-link edit-link">Edit event</button>
-      			</div>
-      			<div class="col-sm-3">
-      				<button class="btn btn-primary btn-sm add-guest" data-toggle="modal" data-target="#addGuest">Add a new Guest</button>
-      			</div>
-      		</div>
-			<div class="row guest-list">
-				<div class="col-sm-4">
-					<div class="col-header">Attending</div>
-					<ul>
-						<li>Djon <small><a href="#">edit</a></small></li>
-					</ul>
-				</div>
-				<div class="col-sm-4">
-					<div class="col-header">Maybe</div>
-					<ul>
-						<li>Luci</li>
-					</ul>
-				</div>	
-				<div class="col-sm-4">
-					<div class="col-header">Not attenging</div>
-					<ul>
-						<li>Mike</li>
-					</ul>
-				</div>
-			</div>
-		</div>	
 
-		<div class="event-item">
-      		<div class="row event-header">
-      			<div class="col-sm-6">
-      				<h3>Cat show <small>3 september</small></h3>
-      			</div>
-      			<div class="col-sm-3">
-      				<button class="btn btn-link edit-link">Edit event</button>
-      			</div>
-      			<div class="col-sm-3">
-      				<button class="btn btn-primary btn-sm add-guest" data-toggle="modal" data-target="#addGuest">Add a new Guest</button>
-      			</div>
-      		</div>
-			<div class="row guest-list">
-				<div class="col-sm-4">
-					<div class="col-header">Attending</div>
-					<ul>
-						<li>Djon</li>
-					</ul>
-				</div>
-				<div class="col-sm-4">
-					<div class="col-header">Maybe</div>
-					<ul>
-						<li>Luci</li>
-					</ul>
-				</div>	
-				<div class="col-sm-4">
-					<div class="col-header">Not attenging</div>
-					<ul>
-						<li>Mike</li>
-					</ul>
-				</div>
-			</div>
-		</div>	
-	  </div>	
+
+	  {{> allEvents}}
+
+	 	
       
       <footer class="footer">
         <p>&copy; Events Manager 2015</p>
@@ -170,3 +106,64 @@
 	</div>
 
   </body>
+
+  <template name="allEvents">
+  	<div class="event-list">
+  		{{#each events}}
+  			{{> oneEvent }}
+  		{{/each}}
+  	</div>
+  </template>
+
+  <template name="oneEvent">
+	<div class="event-item">
+  		<div class="row event-header">
+  			<div class="col-sm-6">
+  				<h3>{{name}} <small>{{date}}</small></h3>
+  			</div>
+  			<div class="col-sm-3">
+  				<button class="btn btn-link edit-link">Edit event</button>
+  			</div>
+  			<div class="col-sm-3">
+  				<button class="btn btn-primary btn-sm add-guest" data-toggle="modal" data-target="#addGuest">Add a new Guest</button>
+  			</div>
+  		</div>
+
+		<div class="row guest-list">
+			<div class="col-sm-4">
+				<div class="col-header">Attending</div>
+				<ul>
+					{{#each guests}}
+						{{#if statusIs "attending"}}
+							{{> guest}}
+						{{/if}}
+					{{/each}}
+				</ul>
+			</div>
+			<div class="col-sm-4">
+				<div class="col-header">Maybe</div>
+				<ul>
+					{{#each guests}}
+						{{#if statusIs "maybe"}}
+							{{> guest}}
+						{{/if}}
+					{{/each}}
+				</ul>
+			</div>	
+			<div class="col-sm-4">
+				<div class="col-header">Not attenging</div>
+				<ul>
+					{{#each guests}}
+						{{#if statusIs "not attending"}}
+							{{> guest}}
+						{{/if}}
+					{{/each}}
+				</ul>
+			</div>
+		</div>
+	</div>
+  </template>
+
+  <template name="guest">
+  	<li><img src="{{picture}}"> {{name}} <small><a href="#">edit</a></small></li>
+  </template>
