@@ -6607,7 +6607,36 @@ body {
   }
   /* Space out the masthead */
   .header {
-    margin-bottom: 30px;
+    margin-bottom: 19px;
   }
+}
+.event-list .event-item {
+  padding: 12px 28px;
+  border: 1px solid #e5e5e5;
+  margin: 10px;
+  border-radius: 9px;
+}
+.event-list .event-item h3 {
+  margin-top: 3px;
+  margin-bottom: 8px;
+}
+.event-list .event-item .event-header {
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+}
+.event-list .event-item .guest-list .col-sm-4 {
+  border-right: 1px solid grey;
+}
+.event-list .event-item .guest-list .col-sm-4:last-child {
+  border-right: none;
+}
+.event-list .event-item .guest-list .col-header {
+  text-align: center;
+  font-weight: bold;
+}
+.event-list .event-item .guest-list ul {
+  list-style: none;
+  padding-left: 5px;
 }
 /*# sourceMappingURL=bootstrap.css.map */

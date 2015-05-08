@@ -29,10 +29,76 @@
         </div>
       </div>
 
-      <div class="row">
-        
-      </div>
+	  <div class="event-list">
+      	<div class="event-item">
+      		<div class="row event-header">
+      			<div class="col-sm-6">
+      				<h3>Cat show <small>3 september</small></h3>
+      			</div>
+      			<div class="col-sm-3">
+      				<button class="btn btn-link edit-link">Edit event</span>
+      			</div>
+      			<div class="col-sm-3">
+      				<button class="btn btn-primary btn-sm add-guest" data-toggle="modal" data-target="#addGuest">Add a new Guest</button>
+      			</div>
+      		</div>
+			<div class="row guest-list">
+				<div class="col-sm-4">
+					<div class="col-header">Attending</div>
+					<ul>
+						<li>Djon <small><a href="#">edit</a></small></li>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					<div class="col-header">Maybe</div>
+					<ul>
+						<li>Luci</li>
+					</ul>
+				</div>	
+				<div class="col-sm-4">
+					<div class="col-header">Not attenging</div>
+					<ul>
+						<li>Mike</li>
+					</ul>
+				</div>
+			</div>
+		</div>	
 
+		<div class="event-item">
+      		<div class="row event-header">
+      			<div class="col-sm-6">
+      				<h3>Cat show <small>3 september</small></h3>
+      			</div>
+      			<div class="col-sm-3">
+      				<button class="btn btn-link edit-link">Edit event</span>
+      			</div>
+      			<div class="col-sm-3">
+      				<button class="btn btn-primary btn-sm add-guest" data-toggle="modal" data-target="#addGuest">Add a new Guest</button>
+      			</div>
+      		</div>
+			<div class="row guest-list">
+				<div class="col-sm-4">
+					<div class="col-header">Attending</div>
+					<ul>
+						<li>Djon</li>
+					</ul>
+				</div>
+				<div class="col-sm-4">
+					<div class="col-header">Maybe</div>
+					<ul>
+						<li>Luci</li>
+					</ul>
+				</div>	
+				<div class="col-sm-4">
+					<div class="col-header">Not attenging</div>
+					<ul>
+						<li>Mike</li>
+					</ul>
+				</div>
+			</div>
+		</div>	
+	  </div>	
+      
       <footer class="footer">
         <p>&copy; Events Manager 2015</p>
       </footer>
@@ -61,6 +127,42 @@
 		      <div class="modal-footer">
 		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 		        <button type="button" class="btn btn-success" type="submit">Create</button>
+		      </div>
+		   </form>
+	    </div>
+	  </div>
+	</div>
+
+    <!-- Add a new Guest Modal -->
+	<div class="modal fade" id="addGuest" tabindex="-1" role="dialog" aria-labelledby="addGuestLabel" aria-hidden="true">
+	  <div class="modal-dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel">Add a new Guest</h4>
+	      </div>
+	        <form>
+		      <div class="modal-body">
+				  <div class="form-group">
+				    <label for="inputGuestName">Name</label>
+				    <input type="text" class="form-control" id="inputGuestName" placeholder="Enter a guest name">
+				  </div>
+				  <div class="form-group">
+				    <label for="inputGuestPicture">Date</label>
+				    <input type="text" class="form-control" id="inputGuestPicture" placeholder="Select a picture" value="http://lorempixel.com/50/50/people/">
+				  </div>
+				  <div class="form-group">
+ 					<label for="inputGuestStatus">Status</label>
+				    <select class="form-control" id="inputGuestStatus">
+					  <option>Attening</option>
+					  <option>Maybe</option>
+					  <option>Not attening</option>
+					</select>
+				  </div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-success" type="submit">Add</button>
 		      </div>
 		   </form>
 	    </div>
