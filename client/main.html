@@ -24,7 +24,7 @@
 		  	<h3 class="text-muted">Events Manager</h3>
 		  </div>
 		  <div class="col-sm-3">
-		  	<button class="btn btn-primary create-event" data-toggle="modal" data-target="#createEvent">Create a new Event</button>
+		  	<button class="btn btn-primary manage-event" data-toggle="modal" data-target="#manageEvent">Create a new Event</button>
 		  </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
     </div> <!-- /container -->
 
     <!-- Crete a new Event Modal -->
-	<div class="modal fade" id="createEvent" tabindex="-1" role="dialog" aria-labelledby="createEventLabel" aria-hidden="true">
+	<div class="modal fade" id="manageEvent" tabindex="-1" role="dialog" aria-labelledby="manageEventLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
@@ -49,7 +49,7 @@
 	        	<h4 class="modal-title" id="myModalLabel">Crete a new Event</h4>
 	        {{/if}}
 	      </div>
-	        <form class="create-event">
+	        <form class="manage-event">
 		      <div class="modal-body">
 				  <div class="form-group">
 				    <label for="inputEventName">Name</label>
@@ -126,7 +126,7 @@
   				<h3>{{name}} <small>{{displayDate date}}</small></h3>
   			</div>
   			<div class="col-sm-2">
-  				<button class="btn btn-link edit-link" data-toggle="modal" data-target="#createEvent">Edit event</button>
+  				<button class="btn btn-link edit-link" data-toggle="modal" data-target="#manageEvent">Edit event</button>
   			</div>
   			<div class="col-sm-3">
   				<button class="btn btn-primary btn-sm add-guest" data-toggle="modal" data-target="#addGuest">Add a new Guest</button>

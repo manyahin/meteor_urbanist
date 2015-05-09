@@ -29,7 +29,7 @@ if (Meteor.isClient) {
 			Session.set('editing_event_key', this._id);
 
 			$('#inputEventName').val(this.name);
-			$('#inputEventDate').val(dateFormat(this.date, "dd/mm/yy"));
+			$('#inputEventDate').val(dateFormat(this.date, "dd/mm/yyyy"));
 
 			// var $eventDate = $(event.target).find('#inputEventDate');
 			// $eventDate.val(dateFormat(this.date, "dd/mm/yy"));
@@ -39,12 +39,12 @@ if (Meteor.isClient) {
 	// body template.
 	Template.body.helpers({
 		editing_event_key : function() {
-			console.log(Session.get('editing_event_key'));
 			return Session.get('editing_event_key');
 		}
 	});
 	Template.body.events({
-		'submit .create-event': function(event) {
+		// Add or Edit event.
+		'submit .manage-event': function(event) {
 			event.preventDefault();
 
 			// Get and check form values.
@@ -67,7 +67,7 @@ if (Meteor.isClient) {
 		  			}
 		  		})
 		  		// Release editing key. 
-		  		Session.get('editing_event_key', false);
+		  		Session.set('editing_event_key', false);
 		  	} else {
 		  		// Insert new entity to database.
 		  		Events.insert({
@@ -82,7 +82,7 @@ if (Meteor.isClient) {
 		  	$eventDate.val('');
 
 		  	// Close modal.
-		  	$('#createEvent').modal('hide');
+		  	$('#manageEvent').modal('hide');
 		},
 		'submit .add-guest': function(event) {
 			event.preventDefault();
