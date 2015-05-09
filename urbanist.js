@@ -73,6 +73,22 @@ if (Meteor.isClient) {
 			// Close modal.
 			$('#manageEvent').modal('hide');
 		},
+		// Delete guest.
+		'click .delete-guest': function(event) {
+			event.preventDefault();
+			// Get parent id from Session.
+			var _parent_id = Session.get('parent_id');
+			// Remove guest from event.
+			Events.update({ 
+				_id: _parent_id 
+			}, {
+				$pull : {
+					guests: { name: Session.get("guestName") }
+				}
+			});
+			// Close modal.
+			$('#manageGuest').modal('hide');
+		},
 		// Add or Edit event.
 		'submit .manage-event': function(event) {
 			event.preventDefault();
