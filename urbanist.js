@@ -36,6 +36,10 @@ if (Meteor.isClient) {
 		'click .edit-guest': function(event, obj) {
 			Session.set('parent_id', this._parent_id);
 			Session.set('status', 'edit_guest');
+			// Its here to fix holl in my head.
+			// Really because i don't know why name is lost
+			// after modal is opened. 
+			Session.set('guestName', this.name);
 			// Fill inputs with data from collection.
 			$('#inputGuestName').val(this.name);
 		  	$('#inputGuestPicture').val(this.picture);
@@ -48,6 +52,12 @@ if (Meteor.isClient) {
 		// Return value if its edit mode.
 		editing_key : function() {
 			return Session.get('editing_key');
+		},
+		manage_guest : function() {
+			return Session.get('status') === 'edit_guest';
+		},
+		getName : function() {
+			return Session.get('guestName');
 		}
 	});
 	Template.body.events({
@@ -111,7 +121,7 @@ if (Meteor.isClient) {
 		      return;
 		  	// Update event, etc add a guest. 
 		  	if (Session.get('status') === 'add_guest') {
-				// Update old entity in database.
+				// Create a new guest.
 				Events.update(
 			  		{
 						_id: Session.get('parent_id')
@@ -129,25 +139,23 @@ if (Meteor.isClient) {
 			  	);
 		  	} else if (Session.get('status') === 'edit_guest') {
 				// Update old entity in database.
-				Events.update(
-			  		{
-						_id: Session.get('parent_id')
-					},
-					{
-				  		$push : {
-				  			guests: {
-				  				_parent_id: Session.get('parent_id'),
-				  				name: $guestName.val(),
-						  		picture: $guestPicture.val(),
-						  		status: $guestStatus.val()
-						  	}
-				  		}
-				  	}
-			  	);
+				Meteor.call('update_guest', Session.get('parent_id'), $guestName.val(), $guestPicture.val(), $guestStatus.val());
+				// Events.update(
+			 //  		{
+				// 		_id: Session.get('parent_id'),
+				// 		"guests.name": $guestName.val(),
+				// 	},
+				// 	{
+				//   		$set : {
+				//   			"guests.$.picture": $guestPicture.val(),
+				//   			"guests.$.status": $guestStatus.val()
+				//   		}
+				//   	}
+			 //  	);
 		  	} 
 		  	
 		  	// Close modal.
-		  	$('#addGuest').modal('hide');
+		  	$('#manageGuest').modal('hide');
 		},
 	});
 
@@ -163,4 +171,23 @@ if (Meteor.isServer) {
 		})
     }
   });
+
+  // Its fix error about unauthorized [403]
+  Meteor.methods({
+  	update_guest: function (parent_id, guest_name, guest_picture, guest_status) {
+		Events.update(
+	  		{
+				_id: parent_id,
+				"guests.name": guest_name,
+			},
+			{
+		  		$set : {
+		  			"guests.$.picture": guest_picture,
+		  			"guests.$.status": guest_status
+		  		}
+		  	}
+	  	);
+	}
+  });
+
 }
