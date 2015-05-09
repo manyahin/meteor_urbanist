@@ -4,7 +4,7 @@ if (Meteor.isClient) {
 	// Template allEvents.
 	Template.allEvents.helpers({
 		events: function() {
-			return Events.find({}, {$sort: {date : 1}});
+			return Events.find({}, {sort: { date: 1 }});
 		}
 	});
 
@@ -183,6 +183,8 @@ if (Meteor.isServer) {
     if (Events.find().count() === 0) {
 		var events_data = JSON.parse(Assets.getText('events.json'));
 		events_data.forEach(function(obj) {
+			// Fix date for db.
+			obj.date = new Date(obj.date);
 			Events.insert(obj);
 		})
     }
