@@ -27,12 +27,9 @@ if (Meteor.isClient) {
 		},
 		'click button.edit-link': function(event, obj) {
 			Session.set('editing_event_key', this._id);
-
+			// Fill inputs with data from collection.
 			$('#inputEventName').val(this.name);
-			$('#inputEventDate').val(dateFormat(this.date, "dd/mm/yyyy"));
-
-			// var $eventDate = $(event.target).find('#inputEventDate');
-			// $eventDate.val(dateFormat(this.date, "dd/mm/yy"));
+			$('#inputEventDate').val(dateFormat(this.date, "mm/dd/yyyy"));
 		}
 	});
 
