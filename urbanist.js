@@ -1,17 +1,14 @@
-var editing_event_key = false;
-
 Events = new Mongo.Collection("events");
 
 if (Meteor.isClient) {
-
-	// allEvents template.
+	// Template allEvents.
 	Template.allEvents.helpers({
 		events: function() {
 			return Events.find({}, {$sort: {date : 1}});
 		}
 	});
 
-	// oneEvent template.
+	// Template oneEvent.
 	Template.oneEvent.helpers({
 		statusIs : function(status) {
 			return this.status === status;
@@ -23,20 +20,34 @@ if (Meteor.isClient) {
 
 	Template.oneEvent.events({
 		'click button.add-guest': function(event, obj) {
-			Session.set('editing_key', this._id);
+			Session.set('parent_id', this._id);
+			Session.set('status', 'add_guest');
 		},
-		'click button.edit-link': function(event, obj) {
-			Session.set('editing_event_key', this._id);
+		'click button.edit-event': function(event, obj) {
+			Session.set('editing_key', this._id);
 			// Fill inputs with data from collection.
 			$('#inputEventName').val(this.name);
 			$('#inputEventDate').val(dateFormat(this.date, "mm/dd/yyyy"));
 		}
 	});
 
-	// body template.
+	// Template Guest
+	Template.guest.events({
+		'click .edit-guest': function(event, obj) {
+			Session.set('parent_id', this._parent_id);
+			Session.set('status', 'edit_guest');
+			// Fill inputs with data from collection.
+			$('#inputGuestName').val(this.name);
+		  	$('#inputGuestPicture').val(this.picture);
+		  	$('#inputGuestStatus').val(this.status);
+		}
+	})
+
+	// Template body.
 	Template.body.helpers({
-		editing_event_key : function() {
-			return Session.get('editing_event_key');
+		// Return value if its edit mode.
+		editing_key : function() {
+			return Session.get('editing_key');
 		}
 	});
 	Template.body.events({
@@ -44,11 +55,11 @@ if (Meteor.isClient) {
 		'click .delete-event': function(event) {
 			event.preventDefault();
 			// Get event _id from Session.
-			var _id_event = Session.get('editing_event_key');
+			var _id_event = Session.get('editing_key');
 			// Remove event from database.
 			Events.remove({_id: _id_event});
 			// Release editing key. 
-		  	Session.set('editing_event_key', false);
+		  	Session.set('editing_key', false);
 			// Close modal.
 			$('#manageEvent').modal('hide');
 		},
@@ -63,7 +74,7 @@ if (Meteor.isClient) {
 		    if (! $eventDate.val())
 		      return;
 		  	// Get event _id from Session.
-		  	var _id_event = Session.get('editing_event_key');
+		  	var _id_event = Session.get('editing_key');
 		  	if (_id_event) {
 		  		// Update old entity in database.
 		  		Events.update({
@@ -74,8 +85,6 @@ if (Meteor.isClient) {
 		  				date: new Date($eventDate.val())
 		  			}
 		  		})
-		  		// Release editing key. 
-		  		Session.set('editing_event_key', false);
 		  	} else {
 		  		// Insert new entity to database.
 		  		Events.insert({
@@ -84,50 +93,60 @@ if (Meteor.isClient) {
 			  		guests: []
 			  	});
 		  	}
-
-		  	// Release inputs.
-		  	$eventName.val('');
-		  	$eventDate.val('');
-
 		  	// Close modal.
 		  	$('#manageEvent').modal('hide');
 		},
-		'submit .add-guest': function(event) {
+		// Add or Edit guest.
+		'submit .manage-guest': function(event) {
 			event.preventDefault();
-
+			// Get and check form values.
 			var $guestName = $(event.target).find('#inputGuestName');
 		    if (! $guestName.val())
 		      return;
-
 		  	var $guestPicture = $(event.target).find('#inputGuestPicture');
 		    if (! $guestPicture.val())
 		      return;
-
 		    var $guestStatus = $(event.target).find('#inputGuestStatus');
 		    if (! $guestStatus.val())
 		      return;
-
-		  	Events.update(
-		  		{
-					_id: Session.get('editing_key')
-				},
-				{
-			  		$push : {
-			  			guests: {
-			  				name: $guestName.val(),
-					  		picture: $guestPicture.val(),
-					  		status: $guestStatus.val()
-					  	}
-			  		}
-			  	}
-		  	);
-
-		  	$guestName.val('');
-		  	$guestPicture.val('');
-		  	$guestStatus.val('');
-
-		  	Session.set('editing_key', null);
-
+		  	// Update event, etc add a guest. 
+		  	if (Session.get('status') === 'add_guest') {
+				// Update old entity in database.
+				Events.update(
+			  		{
+						_id: Session.get('parent_id')
+					},
+					{
+				  		$push : {
+				  			guests: {
+				  				_parent_id: Session.get('parent_id'),
+				  				name: $guestName.val(),
+						  		picture: $guestPicture.val(),
+						  		status: $guestStatus.val()
+						  	}
+				  		}
+				  	}
+			  	);
+		  	} else if (Session.get('status') === 'edit_guest') {
+				// Update old entity in database.
+				Events.update(
+			  		{
+						_id: Session.get('parent_id')
+					},
+					{
+				  		$push : {
+				  			guests: {
+				  				_parent_id: Session.get('parent_id'),
+				  				name: $guestName.val(),
+						  		picture: $guestPicture.val(),
+						  		status: $guestStatus.val()
+						  	}
+				  		}
+				  	}
+			  	);
+		  	} 
+		  	
+		  	// Close modal.
 		  	$('#addGuest').modal('hide');
 		},
 	});

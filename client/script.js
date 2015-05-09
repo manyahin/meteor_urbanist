@@ -4,13 +4,19 @@ $(function() {
 		orientation: 'top'
 	});
 
-	// Release inputs and session edit key if user cancel edit modal.
-	$('#manageEvent').on('hidden.bs.modal', function (event) {
+	// Release inputs and session if a user cancel modal.
+	$('#manageEvent, #manageGuest').on('hidden.bs.modal', function (event) {
 		// Release editing key. 
-	  	Session.set('editing_event_key', false);
-	  	// Release inputs.
+	  	Session.set('editing_key', false);
+	  	Session.set('parent_id', false);
+	  	Session.set('status', false);
+	  	// Release inputs for Event.
 	  	$('#inputEventName').val('');
 	  	$('#inputEventDate').val('');
-	})	
+	    // Release inputs for Guest.
+	  	$('#inputGuestName').val('');
+	  	$('#inputGuestPicture').val('');
+	  	$('#inputGuestStatus').val('');
+	});	
 })
 

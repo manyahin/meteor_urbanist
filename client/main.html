@@ -37,13 +37,13 @@
 
     </div> <!-- /container -->
 
-    <!-- Crete a new Event Modal -->
+    <!-- Manage an Event Modal -->
 	<div class="modal fade" id="manageEvent" tabindex="-1" role="dialog" aria-labelledby="manageEventLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        {{#if editing_event_key}}
+	        {{#if editing_key}}
 	        	<h4 class="modal-title" id="myModalLabel">Edit an Event</h4>
 	        {{else}}
 	        	<h4 class="modal-title" id="myModalLabel">Crete a new Event</h4>
@@ -63,13 +63,13 @@
 		      <div class="modal-footer">
 		      	<div class="row">
 		      		<div class="col-sm-6 left-side">
-		      			{{#if editing_event_key}}
+		      			{{#if editing_key}}
 				        	<button class="btn btn-danger delete-event" type="submit">Delete</button>
 				        {{/if}}
 		      		</div>
 		      		<div class="col-sm-6 right-side">
 		      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		      			{{#if editing_event_key}}
+		      			{{#if editing_key}}
 				      		<button class="btn btn-success" type="submit">Save changes</button>
 				        {{else}}
 				        	<button class="btn btn-success" type="submit">Create</button>
@@ -82,15 +82,19 @@
 	  </div>
 	</div>
 
-    <!-- Add a new Guest Modal -->
-	<div class="modal fade" id="addGuest" tabindex="-1" role="dialog" aria-labelledby="addGuestLabel" aria-hidden="true">
+    <!-- Manage a Guest Modal -->
+	<div class="modal fade" id="manageGuest" tabindex="-1" role="dialog" aria-labelledby="manageGuestLabel" aria-hidden="true">
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel">Add a new Guest</h4>
+	        {{#if editing_key}}
+	        	<h4 class="modal-title" id="myModalLabel">Edit a Guest</h4>
+	        {{else}}
+	        	<h4 class="modal-title" id="myModalLabel">Add a new Guest</h4>
+	        {{/if}}
 	      </div>
-	        <form class="add-guest">
+	        <form class="manage-guest">
 		      <div class="modal-body">
 				  <div class="form-group">
 				    <label for="inputGuestName">Name</label>
@@ -110,8 +114,21 @@
 				  </div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        <button class="btn btn-success" type="submit">Add</button>
+		      	<div class="row">
+		      		<div class="col-sm-6 left-side">
+		      			{{#if editing_key}}
+				        	<button class="btn btn-danger delete-guest" type="submit">Delete</button>
+				        {{/if}}
+		      		</div>
+		      		<div class="col-sm-6 right-side">
+		      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      			{{#if editing_key}}
+				      		<button class="btn btn-success" type="submit">Save changes</button>
+				        {{else}}
+				        	<button class="btn btn-success" type="submit">Add</button>
+				        {{/if}}
+		      		</div>
+		      	</div>	
 		      </div>
 		   </form>
 	    </div>
@@ -135,10 +152,10 @@
   				<h3>{{name}} <small>{{displayDate date}}</small></h3>
   			</div>
   			<div class="col-sm-2">
-  				<button class="btn btn-link edit-link" data-toggle="modal" data-target="#manageEvent">Edit event</button>
+  				<button class="btn btn-link edit-event" data-toggle="modal" data-target="#manageEvent">Edit event</button>
   			</div>
   			<div class="col-sm-3">
-  				<button class="btn btn-primary btn-sm add-guest" data-toggle="modal" data-target="#addGuest">Add a new Guest</button>
+  				<button class="btn btn-primary btn-sm add-guest" data-toggle="modal" data-target="#manageGuest">Add a new Guest</button>
   			</div>
   		</div>
 
@@ -178,5 +195,7 @@
   </template>
 
   <template name="guest">
-  	<li><img src="pictures/{{picture}}"> {{name}} <small><a href="#">edit</a></small></li>
+  	<li>
+  		<img src="pictures/{{picture}}"> {{name}} <button class="btn btn-link edit-guest" data-toggle="modal" data-target="#manageGuest">edit</button>
+  	</li>
   </template>

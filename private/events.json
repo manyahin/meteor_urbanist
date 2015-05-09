@@ -1,24 +1,29 @@
 [
 	{
+		"_id": "catshow",
 		"name": "Cat show",
 		"date": "Tue May 04 2015 22:17:13 GMT+0300 (IDT)",
 		"guests": [
 			{
+				"_parent_id": "catshow",
 				"name": "Jone",
 				"picture": "1.jpeg",
 				"status": "attending"
 			},
 			{
+				"_parent_id": "catshow",
 				"name": "Mary",
 				"picture": "2.jpeg",
 				"status": "not attending"
 			},
 			{
+				"_parent_id": "catshow",
 				"name": "Michael",
 				"picture": "3.jpeg",
 				"status": "maybe"
 			},
 			{
+				"_parent_id": "catshow",
 				"name": "Daniel",
 				"picture": "4.jpeg",
 				"status": "attending"
@@ -26,25 +31,30 @@
 		]
 	},
 	{
+		"_id": "bigdata",
 		"name": "Big data",
 		"date": "Tue Sep 05 2015 22:17:13 GMT+0300 (IDT)",
 		"guests": [
 			{
+				"_parent_id": "bigdata",
 				"name": "Jone",
 				"picture": "1.jpeg",
 				"status": "not attending"
 			},
 			{
+				"_parent_id": "bigdata",
 				"name": "Mary",
 				"picture": "2.jpeg",
 				"status": "not attending"
 			},
 			{
+				"_parent_id": "bigdata",
 				"name": "Michael",
 				"picture": "3.jpeg",
 				"status": "attending"
 			},
 			{
+				"_parent_id": "bigdata",
 				"name": "Daniel",
 				"picture": "4.jpeg",
 				"status": "attending"
@@ -52,25 +62,30 @@
 		]
 	},
 	{
+		"_id": "publiclibrary",
 		"name": "Public library",
 		"date": "Tue Sep 06 2015 22:17:13 GMT+0300 (IDT)",
 		"guests": [
 			{
+				"_parent_id": "publiclibrary",
 				"name": "Jone",
 				"picture": "1.jpeg",
 				"status": "attending"
 			},
 			{
+				"_parent_id": "publiclibrary",
 				"name": "Mary",
 				"picture": "2.jpeg",
 				"status": "attending"
 			},
 			{
+				"_parent_id": "publiclibrary",
 				"name": "Michael",
 				"picture": "3.jpeg",
 				"status": "maybe"
 			},
 			{
+				"_parent_id": "publiclibrary",
 				"name": "Daniel",
 				"picture": "4.jpeg",
 				"status": "attending"
