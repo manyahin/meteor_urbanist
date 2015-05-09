@@ -40,10 +40,21 @@ if (Meteor.isClient) {
 		}
 	});
 	Template.body.events({
+		// Delete event.
+		'click .delete-event': function(event) {
+			event.preventDefault();
+			// Get event _id from Session.
+			var _id_event = Session.get('editing_event_key');
+			// Remove event from database.
+			Events.remove({_id: _id_event});
+			// Release editing key. 
+		  	Session.set('editing_event_key', false);
+			// Close modal.
+			$('#manageEvent').modal('hide');
+		},
 		// Add or Edit event.
 		'submit .manage-event': function(event) {
 			event.preventDefault();
-
 			// Get and check form values.
 			var $eventName = $(event.target).find('#inputEventName');
 		    if (! $eventName.val())
@@ -51,7 +62,7 @@ if (Meteor.isClient) {
 		  	var $eventDate = $(event.target).find('#inputEventDate');
 		    if (! $eventDate.val())
 		      return;
-
+		  	// Get event _id from Session.
 		  	var _id_event = Session.get('editing_event_key');
 		  	if (_id_event) {
 		  		// Update old entity in database.

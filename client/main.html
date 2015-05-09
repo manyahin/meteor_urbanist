@@ -61,12 +61,21 @@
 				  </div>
 		      </div>
 		      <div class="modal-footer">
-		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-		        {{#if editing_event_key}}
-		        	<button class="btn btn-success" type="submit">Save changes</button>
-		        {{else}}
-		        	<button class="btn btn-success" type="submit">Create</button>
-		        {{/if}}
+		      	<div class="row">
+		      		<div class="col-sm-6 left-side">
+		      			{{#if editing_event_key}}
+				        	<button class="btn btn-danger delete-event" type="submit">Delete</button>
+				        {{/if}}
+		      		</div>
+		      		<div class="col-sm-6 right-side">
+		      			<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		      			{{#if editing_event_key}}
+				      		<button class="btn btn-success" type="submit">Save changes</button>
+				        {{else}}
+				        	<button class="btn btn-success" type="submit">Create</button>
+				        {{/if}}
+		      		</div>
+		      	</div>	
 		      </div>
 		   </form>
 	    </div>
